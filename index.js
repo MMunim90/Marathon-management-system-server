@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const admin = require("firebase-admin");
@@ -10,7 +11,6 @@ admin.initializeApp({
 const app = express();
 const port = process.env.PORT || 3000;
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
-require("dotenv").config();
 
 // middleware
 app.use(
@@ -78,7 +78,7 @@ async function run() {
 
     // show marathon on home
     app.get("/homeMarathons", async (req, res) => {
-      const result = await marathonCollection.find().limit(6).toArray();
+      const result = await marathonCollection.find().limit(8).toArray();
       res.send(result);
     });
 
